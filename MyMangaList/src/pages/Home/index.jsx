@@ -1,7 +1,7 @@
 import "./home.css";
 import MangaContainer from "../../components/MangasContainer";
 import { Link } from "react-router-dom";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlinePlus, AiFillHeart } from "react-icons/ai";
 
 function Home() {
   return (
@@ -18,6 +18,19 @@ function Home() {
           }}
         >
           <AiOutlinePlus />
+        </button>
+      </Link>
+      <Link to="/fav">
+        <button
+          style={{
+            position: "fixed",
+            right: "50px",
+            bottom: "90px",
+            borderRadius: "8px",
+            padding: "0.6em 1.2em",
+          }}
+        >
+          <AiFillHeart />
         </button>
       </Link>
     </>

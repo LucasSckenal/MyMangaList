@@ -44,7 +44,14 @@ const MangaContainer = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ display: "flex", position: "relative", width: "300px" }}>
+      <div
+        style={{
+          display: "flex",
+          position: "relative",
+          width: "300px",
+          flexDirection: "row",
+        }}
+      >
         <input
           type="text"
           placeholder="Pesquisar mangas"
@@ -62,6 +69,7 @@ const MangaContainer = () => {
           <AiOutlineSearch />
         </div>
       </div>
+      <p>Total de mangas: {mangas.length}</p>
       <div
         style={{
           display: "flex",
@@ -78,10 +86,10 @@ const MangaContainer = () => {
             name={manga.name}
             img={manga.img}
             stars={manga.stars}
+            fav={manga.isFavorite}
           />
         ))}
       </div>
-      
     </div>
   );
 };

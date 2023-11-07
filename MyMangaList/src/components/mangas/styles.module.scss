@@ -6,6 +6,7 @@
  height: auto;
  padding: 5px;
 
+
  .upInputs {
   display: flex;
   flex-direction: row;
@@ -28,6 +29,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
+    padding-top: 7px;
    }
   }
  }
@@ -36,10 +38,11 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  padding-left: 8px;
  }
 
  img {
-  height: 200px;
+  height: 280px;
   width: 200px;
   border-radius: 8px;
  }
@@ -47,18 +50,24 @@
  .bottom {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 10px;
 
-  button {
-   width: 30px;
-   height: 30px;
+  .btns {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+
+   button {
+    width: 30px;
+    height: 30px;
 
 
-   svg {
-    display: flex;
-    justify-content: center;
+    svg {
+     display: flex;
+     justify-content: center;
+    }
    }
   }
  }
