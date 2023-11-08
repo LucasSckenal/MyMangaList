@@ -2,6 +2,7 @@ import { doc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
 import { db } from "../../Api/firebase";
 import { useState, useEffect } from "react";
 import { AiOutlineDelete, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 // eslint-disable-next-line react/prop-types
@@ -96,6 +97,10 @@ const Manga = ({ id, cap, name, img, stars, fav }) => {
     loadFavoriteStatus();
   }, [id]);
 
+  const formatMangaName = (name) => {
+    return name.replace(/ /g, "-");
+  };
+
   return (
     <main className={`${styles.bg} ${isFavorite ? styles.favorite : ""}`}>
       <div className={styles.upInputs}>
@@ -123,7 +128,12 @@ const Manga = ({ id, cap, name, img, stars, fav }) => {
           ))}
         </select>
       </div>
-      <img src={img} alt={name} />
+      <Link
+        to={`https://mangaschan.net/manga/${formatMangaName(name)}`}
+        target="_blank"
+      >
+        <img src={img} alt={name} />
+      </Link>
       <div className={styles.bottom}>
         <p>{name}</p>
         <div className={styles.btns}>
