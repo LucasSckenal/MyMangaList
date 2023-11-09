@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Add = () => {
   return (
     <>
-      <Link to="/">
+      <Link to="/MyMangaList">
         <button
           style={{
             position: "absolute",

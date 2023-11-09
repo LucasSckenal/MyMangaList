@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { db } from "../../Api/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { getAuth } from "@firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import styles from "./styles.module.scss";
 import { AiFillStar, AiOutlineBook, AiOutlinePlusSquare } from "react-icons/ai";
@@ -23,11 +24,15 @@ const AddManga = () => {
 
         const imageUrl = await getDownloadURL(storageRef);
 
+        const auth = getAuth();
+        const loggedInUserId = auth.currentUser.uid;
+
         const mangaData = {
           name: name,
           stars: stars,
           cap: cap,
           img: imageUrl,
+          userId: loggedInUserId,
         };
 
         const mangasCollection = collection(db, "Mangas");
@@ -39,14 +44,11 @@ const AddManga = () => {
         setImg(null);
         setImgURL(null);
 
-        // Exibir uma notificação de sucesso
         toast.success("Manga adicionado com sucesso!");
       } else {
-        // Exibir uma notificação de erro
         toast.error("Nenhuma imagem selecionada.");
       }
     } catch (error) {
-      // Exibir uma notificação de erro
       toast.error("Erro ao adicionar manga: " + error.message);
     }
   };

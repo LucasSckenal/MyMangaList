@@ -33,7 +33,7 @@ const Fav = () => {
 
   return (
     <>
-      <Link to="/">
+      <Link to="/MyMangaList">
         <button
           style={{
             position: "absolute",

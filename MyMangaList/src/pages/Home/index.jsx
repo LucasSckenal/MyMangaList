@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <MangaContainer />
-      <Link to="/add">
+      <Link to="/MyMangaList/add">
         <button
           style={{
             position: "fixed",
@@ -20,7 +20,7 @@ function Home() {
           <AiOutlinePlus />
         </button>
       </Link>
-      <Link to="/fav">
+      <Link to="/MyMangaList/fav">
         <button
           style={{
             position: "fixed",

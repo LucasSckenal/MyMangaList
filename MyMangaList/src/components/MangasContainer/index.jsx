@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { db } from "../../Api/firebase";
+import { db, auth } from "../../Api/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { AiOutlineSearch } from "react-icons/ai";
 
@@ -18,7 +18,10 @@ const MangaContainer = () => {
         const mangaList = [];
         querySnapshot.forEach((doc) => {
           const mangaData = doc.data();
-          mangaList.push({ id: doc.id, ...mangaData });
+          const loggedInUserId = auth.currentUser.uid;
+          if (mangaData.userId === loggedInUserId) {
+            mangaList.push({ id: doc.id, ...mangaData });
+          }
         });
 
         setMangas(mangaList);
@@ -63,9 +66,11 @@ const MangaContainer = () => {
             borderRadius: "8px",
             border: "none",
             padding: "10px",
+            position: "fixed",
+            top: "10px",
           }}
         />
-        <div style={{ position: "absolute", right: "10px", top: "25% " }}>
+        <div style={{ position: "fixed", right: "42%", top: "20px" }}>
           <AiOutlineSearch />
         </div>
       </div>
@@ -87,6 +92,7 @@ const MangaContainer = () => {
             img={manga.img}
             stars={manga.stars}
             fav={manga.isFavorite}
+            user={manga.userId}
           />
         ))}
       </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 
 // eslint-disable-next-line react/prop-types
-const Manga = ({ id, cap, name, img, stars, fav }) => {
+const Manga = ({ id, cap, name, img, stars, fav, user }) => {
   const [localCap, setLocalCap] = useState(cap);
   const [localStars, setLocalStars] = useState(stars);
   const [isFavorite, setIsFavorite] = useState(fav);
